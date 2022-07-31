@@ -1,9 +1,5 @@
-let form_section = document.getElementById('form-section');
-let link_section = document.getElementById('link-section');
-let instruction = document.getElementById('instruction');
-let group_link = document.getElementById('group-link');
-console.log(group_link);
-console.log(instruction);
+console.log("working");
+
 let signup_form = document.getElementById('signup-form');
 let first_name = document.getElementById('first-name');
 let middle_name = document.getElementById('last-name');
@@ -11,52 +7,9 @@ let last_name = document.getElementById('last-name');
 let gender_options = document.getElementsByName("Gender");
 let WhatsApp_number = document.getElementById('WhatsApp_number');
 let phone_number = document.getElementById('phone_number');
-let facebook = document.getElementById('facebook');
-let available_time = document.getElementById('available-time');
-console.log(available_time.value);
+console.log(phone_number);
 
 
-//get data from backend and add it to dropdown list
-async function getDataFromBackend(api_url) {
-    let dates;
-    await fetch(api_url)
-        .then(response => response.json())
-        .then((data) => {
-            dates = data;
-            dates = data["prayer_dates"]
-                // return dates;
-        });
-
-
-    //add dates to HTML dropdown list
-    for (i = 0; i < dates.length; i++) {
-
-        // console.log(dates[i]);
-        // create new option tags 
-        let new_option = document.createElement('option');
-        // create text for option text 
-        let new_option_inner_text = `${dates[i]["time"]}`;
-        //add innertext to option tags
-        new_option.innerText = new_option_inner_text;
-        //set a value attribute for each option tag created
-        new_option.setAttribute("value", new_option_inner_text);
-
-
-        // create new text for id attribute 
-        let id_text = `${dates[i]["id"]}`;
-        new_option.setAttribute("id", id_text);
-
-        // add option tags to select tag as children elements 
-        available_time.append(new_option)
-
-        console.log(new_option)
-
-    }
-    console.log(available_time);
-    console.log(dates);
-}
-
-getDataFromBackend("/prayer_schedule");
 
 //get user data from frontend
 function getFrontendData() {
